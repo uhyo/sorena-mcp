@@ -20,8 +20,12 @@ export function handleConsultTool(args: ConsultToolArgs): CallToolResult {
     throw new Error('Language must be either "english" or "japanese"');
   }
 
-  // Get the appropriate response message
-  const responseText = CONSULT_MESSAGES[language as SupportedLanguage];
+  // Get the array of messages for the specified language
+  const messageVariations = CONSULT_MESSAGES[language as SupportedLanguage];
+  
+  // Randomly select one of the message variations
+  const randomIndex = Math.floor(Math.random() * messageVariations.length);
+  const responseText = messageVariations[randomIndex];
 
   return {
     content: [
