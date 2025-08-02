@@ -30,49 +30,26 @@ server.setRequestHandler(ListToolsRequestSchema, async (): Promise<ListToolsResu
   return {
     tools: [
       {
-        name: 'echo',
-        description: 'Echo back the provided text',
+        name: 'consult',
+        description: 'Get useful advice and guidance on various topics',
         inputSchema: {
           type: 'object',
           properties: {
-            text: {
+            question: {
               type: 'string',
-              description: 'Text to echo back',
+              description: 'The question or topic you need advice about',
             },
-          },
-          required: ['text'],
-        },
-      },
-      {
-        name: 'greet',
-        description: 'Generate a greeting message',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            name: {
+            context: {
               type: 'string',
-              description: 'Name to greet',
+              description: 'Additional context or background information (optional)',
+            },
+            language: {
+              type: 'string',
+              enum: ['english', 'japanese'],
+              description: 'Language for the response (english or japanese)',
             },
           },
-          required: ['name'],
-        },
-      },
-      {
-        name: 'add',
-        description: 'Add two numbers together',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            a: {
-              type: 'number',
-              description: 'First number',
-            },
-            b: {
-              type: 'number',
-              description: 'Second number',
-            },
-          },
-          required: ['a', 'b'],
+          required: ['question'],
         },
       },
     ],
@@ -89,46 +66,42 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
     }
 
     switch (name) {
-      case 'echo':
-        if (typeof args['text'] !== 'string') {
-          throw new Error('Text argument must be a string');
+      case 'consult':
+        if (typeof args['question'] !== 'string') {
+          throw new Error('Question argument must be a string');
         }
         
-        return {
-          content: [
-            {
-              type: 'text',
-              text: `Echo: ${args['text']}`,
-            } as TextContent,
-          ],
-        };
+        const question = args['question'];
+        const context = typeof args['context'] === 'string' ? args['context'] : '';
+        const language = typeof args['language'] === 'string' ? args['language'] : 'english';
+        
+        // Validate language parameter
+        if (language !== 'english' && language !== 'japanese') {
+          throw new Error('Language must be either "english" or "japanese"');
+        }
+        
+        // Placeholder logic - actual consultant implementation to be added later
+        const isJapanese = language === 'japanese';
+        const responseText = isJapanese ? 
+          `📋 コンサルタントツールが呼び出されました
+質問: ${question}
+${context ? `コンテキスト: ${context}\n` : ''}
+🤖 これはプレースホルダーの応答です。実際のコンサルタントロジックは後で実装されます。
 
-      case 'greet':
-        if (typeof args['name'] !== 'string') {
-          throw new Error('Name argument must be a string');
-        }
-        
-        return {
-          content: [
-            {
-              type: 'text',
-              text: `Hello, ${args['name']}! Welcome to Sorena MCP server!`,
-            } as TextContent,
-          ],
-        };
+とりあえず、一般的なアドバイスを提供します：複雑な問題はより小さく管理しやすい部分に分解することを検討してください。ベストプラクティスを研究し、ドキュメントを参照し、必要な時は遠慮なく助けを求めてください。` :
+          `📋 Consultant Tool Called
+Question: ${question}
+${context ? `Context: ${context}\n` : ''}Language: ${language}
 
-      case 'add':
-        if (typeof args['a'] !== 'number' || typeof args['b'] !== 'number') {
-          throw new Error('Both arguments must be numbers');
-        }
-        
-        const result = args['a'] + args['b'];
+🤖 This is a placeholder response. The actual consultant logic will be implemented later.
+
+For now, here's some generic advice: Consider breaking down complex problems into smaller, manageable parts. Research best practices, consult documentation, and don't hesitate to ask for help when needed.`;
         
         return {
           content: [
             {
               type: 'text',
-              text: `${args['a']} + ${args['b']} = ${result}`,
+              text: responseText,
             } as TextContent,
           ],
         };
@@ -158,7 +131,7 @@ async function main(): Promise<void> {
     await server.connect(transport);
     
     console.error('✅ Sorena MCP server running on stdio');
-    console.error('📋 Available tools: echo, greet, add');
+    console.error('📋 Available tools: consult');
     console.error('🔧 Use MCP Inspector to test: npm run inspect');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
