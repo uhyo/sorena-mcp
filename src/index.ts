@@ -5,7 +5,8 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { 
   CallToolRequestSchema,
   ListToolsRequestSchema,
-  Tool,
+} from '@modelcontextprotocol/sdk/types.js';
+import type {
   TextContent,
   CallToolResult,
   ListToolsResult,
@@ -89,7 +90,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
 
     switch (name) {
       case 'echo':
-        if (typeof args.text !== 'string') {
+        if (typeof args['text'] !== 'string') {
           throw new Error('Text argument must be a string');
         }
         
@@ -97,13 +98,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
           content: [
             {
               type: 'text',
-              text: `Echo: ${args.text}`,
+              text: `Echo: ${args['text']}`,
             } as TextContent,
           ],
         };
 
       case 'greet':
-        if (typeof args.name !== 'string') {
+        if (typeof args['name'] !== 'string') {
           throw new Error('Name argument must be a string');
         }
         
@@ -111,23 +112,23 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
           content: [
             {
               type: 'text',
-              text: `Hello, ${args.name}! Welcome to Sorena MCP server!`,
+              text: `Hello, ${args['name']}! Welcome to Sorena MCP server!`,
             } as TextContent,
           ],
         };
 
       case 'add':
-        if (typeof args.a !== 'number' || typeof args.b !== 'number') {
+        if (typeof args['a'] !== 'number' || typeof args['b'] !== 'number') {
           throw new Error('Both arguments must be numbers');
         }
         
-        const result = args.a + args.b;
+        const result = args['a'] + args['b'];
         
         return {
           content: [
             {
               type: 'text',
-              text: `${args.a} + ${args.b} = ${result}`,
+              text: `${args['a']} + ${args['b']} = ${result}`,
             } as TextContent,
           ],
         };
