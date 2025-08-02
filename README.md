@@ -119,7 +119,7 @@ npm run inspect
 Get expert advice and guidance on various topics.
 
 **Parameters:**
-- `question` (string, required): The question or topic you need advice about
+- `plan` (string, required): The implementation plan you want evaluated for feasibility and completeness
 - `context` (string, optional): Additional context or background information
 - `language` (string, optional): Response language - either "english" or "japanese" (defaults to "english")
 
@@ -129,7 +129,7 @@ Get expert advice and guidance on various topics.
 {
   "name": "consult",
   "arguments": {
-    "question": "Should I use microservices or monolith architecture for my new project?",
+    "plan": "1. Set up Node.js API server with Express\n2. Create PostgreSQL database with user and post tables\n3. Implement JWT authentication\n4. Build React frontend with user registration and feed\n5. Deploy to AWS with Docker containers",
     "context": "Building a social media platform with expected 10K users initially",
     "language": "english"
   }
@@ -188,10 +188,18 @@ The server follows the standard MCP protocol and can be integrated with any MCP-
 ```
 @uhyo/sorena-mcp/
 ├── src/
-│   └── index.ts          # Main server implementation
+│   ├── index.ts          # Main server entry point
+│   └── tools/            # Modular tool implementations
+│       ├── index.ts      # Tool registry and routing
+│       └── consult/      # Consult tool module
+│           ├── index.ts  # Module exports
+│           ├── schema.ts # Tool definition and schema
+│           ├── messages.ts # Response messages
+│           └── handler.ts # Tool execution logic
 ├── dist/                 # Compiled JavaScript output
 ├── package.json          # Project configuration
 ├── tsconfig.json         # TypeScript configuration
+├── CLAUDE.md            # Development guidance
 └── README.md            # This file
 ```
 
@@ -207,19 +215,43 @@ The server follows the standard MCP protocol and can be integrated with any MCP-
 
 ### Extending the Server
 
-The current implementation provides a placeholder consultant tool. To extend it:
+The server uses a modular architecture that makes it easy to extend:
 
-1. Modify the `consult` tool handler in `src/index.ts`
-2. Add additional tools by updating the `ListToolsRequestSchema` handler
-3. Implement corresponding tool handlers in the `CallToolRequestSchema` handler
+**Updating Tool Response Messages:**
+1. Edit the appropriate `messages.ts` file (e.g., `src/tools/consult/messages.ts`)
+2. Modify the response text without touching any other code
+3. Rebuild with `npm run build`
+
+**Modifying Tool Logic:**
+1. Edit the appropriate `handler.ts` file (e.g., `src/tools/consult/handler.ts`)
+2. Update the tool execution logic as needed
+3. Follow existing error handling patterns
 
 ### Adding New Tools
 
-To add a new tool:
+To add a completely new tool:
 
-1. Add the tool definition to the tools array in the `ListToolsRequestSchema` handler
-2. Add a new case in the `CallToolRequestSchema` handler switch statement
-3. Implement the tool logic
+1. **Create the tool module structure:**
+   ```bash
+   mkdir src/tools/newtool
+   ```
+
+2. **Create the required files:**
+   - `schema.ts`: Tool definition and input schema
+   - `messages.ts`: Response messages for easy editing
+   - `handler.ts`: Tool execution logic  
+   - `index.ts`: Module exports
+
+3. **Register the tool:**
+   - Import in `src/tools/index.ts`
+   - Add to `getToolDefinitions()` array
+   - Add case to `handleToolCall()` switch statement
+
+4. **Rebuild and test:**
+   ```bash
+   npm run build
+   npm run inspect
+   ```
 
 ## Contributing
 

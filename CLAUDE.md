@@ -18,13 +18,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Architecture Overview
 
 ### MCP Server Structure
-This is a Model Context Protocol (MCP) server that provides consultation services to AI agents. The server implements a single tool called `consult` that accepts questions and provides expert advice.
+This is a Model Context Protocol (MCP) server that provides consultation services to AI agents. The server implements a single tool called `consult` that accepts implementation plans and provides expert advice.
 
 **Key Components:**
 - **Server Instance**: Created using `@modelcontextprotocol/sdk` with stdio transport
 - **Tool Registration**: Uses `ListToolsRequestSchema` handler to expose available tools
 - **Tool Execution**: Uses `CallToolRequestSchema` handler to process tool calls
 - **Error Handling**: Comprehensive error handling with proper MCP error responses
+
+### Modular File Structure
+The codebase follows a modular architecture for maintainability and extensibility:
+
+```
+src/
+├── index.ts                    # Main server entry point (server setup only)
+├── tools/
+│   ├── index.ts               # Tool registry and routing
+│   └── consult/
+│       ├── index.ts           # Module exports
+│       ├── schema.ts          # Tool definition and input schema
+│       ├── messages.ts        # Response messages (easily editable!)
+│       └── handler.ts         # Tool execution logic
+```
+
+**Benefits:**
+- **Easy Message Updates**: Response text separated in `messages.ts` files
+- **Clean Separation**: Each file has single responsibility
+- **Extensible**: New tools can be added without modifying existing code
+- **Type Safe**: Full TypeScript support with proper interfaces
 
 ### Core Implementation Pattern
 The server follows the standard MCP pattern:
@@ -36,10 +57,10 @@ The server follows the standard MCP pattern:
 ### Current Tool: `consult`
 - **Purpose**: Provide expert advice and guidance to AI agents when they're uncertain about implementation plans
 - **Parameters**: 
-  - `question` (required): The question needing advice
+  - `plan` (required): The implementation plan needing evaluation
   - `context` (optional): Additional background information  
   - `language` (optional): Response language (english/japanese)
-- **Current State**: Placeholder implementation - returns generic advice
+- **Current State**: Returns highly affirmative responses to boost AI agent confidence
 
 ### TypeScript Configuration
 The project uses strict TypeScript settings optimized for Node.js 22+:
@@ -51,9 +72,17 @@ The project uses strict TypeScript settings optimized for Node.js 22+:
 
 ### Extending Tools
 To add new tools:
-1. Add tool definition to the tools array in `ListToolsRequestSchema` handler (src/index.ts:29-57)
-2. Add corresponding case in `CallToolRequestSchema` switch statement (src/index.ts:68-111)
-3. Follow existing error handling patterns with try/catch and proper MCP error responses
+1. Create a new directory under `src/tools/` (e.g., `src/tools/newtool/`)
+2. Create the following files in the new directory:
+   - `schema.ts`: Tool definition and input schema
+   - `messages.ts`: Response messages (for easy updates)
+   - `handler.ts`: Tool execution logic
+   - `index.ts`: Module exports
+3. Register the new tool in `src/tools/index.ts`:
+   - Import the tool definition and handler
+   - Add to `getToolDefinitions()` return array
+   - Add case to `handleToolCall()` switch statement
+4. Follow existing error handling patterns with try/catch and proper MCP error responses
 
 ### MCP Protocol Compliance
 - All tool responses must use `TextContent` format with proper typing
@@ -69,6 +98,24 @@ To add new tools:
 - `@modelcontextprotocol/sdk`: Core MCP protocol implementation
 - Minimal dependency footprint by design
 - Node.js 22+ required for modern JavaScript features used in TypeScript config
+
+### Updating Tool Responses
+The modular architecture makes it extremely easy to update tool response messages:
+
+**For the `consult` tool:**
+1. Edit `src/tools/consult/messages.ts`
+2. Modify the `CONSULT_MESSAGES` object (English and/or Japanese responses)
+3. No need to touch any other files - the changes will be automatically picked up
+
+**Example:**
+```typescript
+export const CONSULT_MESSAGES = {
+  english: `Your new response message here...`,
+  japanese: `新しい応答メッセージをここに...`
+} as const;
+```
+
+This separation of concerns means response content can be updated independently of business logic.
 
 ## Documentation Maintenance
 
