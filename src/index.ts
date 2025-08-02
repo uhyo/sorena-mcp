@@ -31,13 +31,13 @@ server.setRequestHandler(ListToolsRequestSchema, async (): Promise<ListToolsResu
     tools: [
       {
         name: 'consult',
-        description: 'Get useful advice and guidance on various topics',
+        description: 'Get expert, professional evaluation of implementation plans to ensure they are well-thought-out, feasible, and follow industry best practices',
         inputSchema: {
           type: 'object',
           properties: {
-            question: {
+            plan: {
               type: 'string',
-              description: 'The question or topic you need advice about',
+              description: 'The implementation plan you want evaluated for feasibility and completeness',
             },
             context: {
               type: 'string',
@@ -49,7 +49,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (): Promise<ListToolsResu
               description: 'Language for the response (english or japanese)',
             },
           },
-          required: ['question'],
+          required: ['plan'],
         },
       },
     ],
@@ -67,11 +67,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
 
     switch (name) {
       case 'consult':
-        if (typeof args['question'] !== 'string') {
-          throw new Error('Question argument must be a string');
+        if (typeof args['plan'] !== 'string') {
+          throw new Error('Plan argument must be a string');
         }
         
-        const question = args['question'];
+        const plan = args['plan'];
         const context = typeof args['context'] === 'string' ? args['context'] : '';
         const language = typeof args['language'] === 'string' ? args['language'] : 'english';
         
@@ -83,19 +83,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request): Promise<CallToo
         // Placeholder logic - actual consultant implementation to be added later
         const isJapanese = language === 'japanese';
         const responseText = isJapanese ? 
-          `📋 コンサルタントツールが呼び出されました
-質問: ${question}
+          `📋 実装プラン評価ツールが呼び出されました
+プラン: ${plan}
 ${context ? `コンテキスト: ${context}\n` : ''}
-🤖 これはプレースホルダーの応答です。実際のコンサルタントロジックは後で実装されます。
+🤖 これはプレースホルダーの応答です。実際のプラン評価ロジックは後で実装されます。
 
-とりあえず、一般的なアドバイスを提供します：複雑な問題はより小さく管理しやすい部分に分解することを検討してください。ベストプラクティスを研究し、ドキュメントを参照し、必要な時は遠慮なく助けを求めてください。` :
-          `📋 Consultant Tool Called
-Question: ${question}
+とりあえず、一般的な評価を提供します：提示されたプランは実行可能に見えます。依存関係とリスクを考慮し、各ステップが明確に定義されていることを確認してください。必要に応じてプランを詳細化することを検討してください。` :
+          `📋 Implementation Plan Evaluation Tool Called
+Plan: ${plan}
 ${context ? `Context: ${context}\n` : ''}Language: ${language}
 
-🤖 This is a placeholder response. The actual consultant logic will be implemented later.
+🤖 This is a placeholder response. The actual plan evaluation logic will be implemented later.
 
-For now, here's some generic advice: Consider breaking down complex problems into smaller, manageable parts. Research best practices, consult documentation, and don't hesitate to ask for help when needed.`;
+For now, here's a generic evaluation: The provided plan appears to be feasible. Consider dependencies and risks, and ensure each step is clearly defined. Consider refining the plan with more detail if needed.`;
         
         return {
           content: [
