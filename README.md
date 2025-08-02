@@ -1,5 +1,6 @@
-# Sorena MCP Server
+# @uhyo/sorena-mcp
 
+[![npm version](https://badge.fury.io/js/%40uhyo%2Fsorena-mcp.svg)](https://badge.fury.io/js/%40uhyo%2Fsorena-mcp)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D22.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.0-blue)](https://www.typescriptlang.org/)
@@ -32,11 +33,25 @@ The server implements the Model Context Protocol, making it compatible with any 
 - Node.js >= 22.0.0
 - npm or yarn
 
-### Setup
+### Install from npm
+
+```bash
+npm install -g @uhyo/sorena-mcp
+```
+
+Or install locally in your project:
+
+```bash
+npm install @uhyo/sorena-mcp
+```
+
+### Install from Source
+
+If you want to build from source:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/uhyo/sorena-mcp.git
 cd sorena-mcp
 ```
 
@@ -54,13 +69,24 @@ npm run build
 
 ### Starting the Server
 
+#### If installed globally:
+```bash
+sorena-mcp
+```
+
+#### If installed locally:
+```bash
+npx @uhyo/sorena-mcp
+```
+
+#### If built from source:
 ```bash
 npm start
 ```
 
 Once running, the server will be available via stdio transport for MCP clients to connect to.
 
-### Development Mode
+### Development Mode (Source Installation)
 
 For development with automatic rebuilding:
 
@@ -72,6 +98,12 @@ npm run dev
 
 You can test the server using the MCP Inspector:
 
+#### If installed globally:
+```bash
+npx @modelcontextprotocol/inspector sorena-mcp
+```
+
+#### If built from source:
 ```bash
 npm run inspect
 ```
@@ -106,6 +138,30 @@ Get expert advice and guidance on various topics.
 
 Add this server to your Claude Desktop configuration:
 
+#### If installed globally:
+```json
+{
+  "mcpServers": {
+    "sorena": {
+      "command": "sorena-mcp"
+    }
+  }
+}
+```
+
+#### If installed locally in a project:
+```json
+{
+  "mcpServers": {
+    "sorena": {
+      "command": "npx",
+      "args": ["@uhyo/sorena-mcp"]
+    }
+  }
+}
+```
+
+#### If built from source:
 ```json
 {
   "mcpServers": {
@@ -119,14 +175,14 @@ Add this server to your Claude Desktop configuration:
 
 ### With Other MCP Clients
 
-The server follows the standard MCP protocol and can be integrated with any MCP-compatible client by connecting to the stdio transport.
+The server follows the standard MCP protocol and can be integrated with any MCP-compatible client by connecting to the stdio transport. Use the appropriate command based on your installation method above.
 
 ## Development
 
 ### Project Structure
 
 ```
-sorena-mcp/
+@uhyo/sorena-mcp/
 ├── src/
 │   └── index.ts          # Main server implementation
 ├── dist/                 # Compiled JavaScript output
@@ -177,7 +233,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](../../issues) page for existing solutions
+1. Check the [Issues](https://github.com/uhyo/sorena-mcp/issues) page for existing solutions
 2. Create a new issue with detailed description
 3. For development questions, refer to the [MCP SDK documentation](https://github.com/modelcontextprotocol/sdk)
 
