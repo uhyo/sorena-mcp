@@ -1,0 +1,44 @@
+{
+  "name": "sorena-mcp",
+  "version": "1.0.0",
+  "description": "A simple MCP server implementation with sample tools",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "rebuild": "npm run clean && npm run build",
+    "typecheck": "tsc --noEmit",
+    "inspect": "npx @modelcontextprotocol/inspector dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "server",
+    "model-context-protocol",
+    "ai",
+    "llm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  }
+}
