@@ -18,6 +18,10 @@ Sorena MCP Server is designed to serve as a reliable consultant that AI agents c
 
 The server implements the Model Context Protocol, making it compatible with any MCP-enabled AI system or client.
 
+## About the Name
+
+"Sorena" derives from the Japanese expression "それな" (sore na), which means "exactly!" or "that's right!" - the phrase you say when someone hits the nail on the head or provides exactly the insight you needed. This captures the essence of what good consultation should be: that moment of clarity when you receive advice that perfectly addresses your situation and makes you think "それな!" In the context of AI consultation, Sorena aims to provide that same feeling of receiving exactly the right guidance at the right time.
+
 ## Features
 
 - 🤖 **Expert Consultation Tool**: Get thoughtful advice and guidance on various topics
