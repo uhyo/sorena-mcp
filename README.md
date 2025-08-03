@@ -32,84 +32,41 @@ The server implements the Model Context Protocol, making it compatible with any 
 
 ## Installation
 
+This is an MCP (Model Context Protocol) server that communicates via stdio transport. It's designed to be integrated with MCP clients rather than run standalone.
+
 ### Prerequisites
 
 - Node.js >= 22.0.0
-- npm or yarn
 
-### Install from npm
+### For Claude Code Users
 
-```bash
-npm install -g @uhyo/sorena-mcp
-```
-
-Or install locally in your project:
+The easiest way to install and configure this MCP server:
 
 ```bash
-npm install @uhyo/sorena-mcp
+claude mcp add sorena -- npx @uhyo/sorena-mcp
 ```
 
-### Install from Source
+This command automatically:
+- Installs the server from npm
+- Configures it in your Claude Code MCP settings
+- Makes it immediately available for use
 
-If you want to build from source:
+### Generic MCP Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/uhyo/sorena-mcp.git
-cd sorena-mcp
-```
+For other MCP clients, this server can be run using:
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Build the project:
-```bash
-npm run build
-```
-
-## Usage
-
-### Starting the Server
-
-#### If installed globally:
-```bash
-sorena-mcp
-```
-
-#### If installed locally:
 ```bash
 npx @uhyo/sorena-mcp
 ```
 
-#### If built from source:
-```bash
-npm start
-```
-
-Once running, the server will be available via stdio transport for MCP clients to connect to.
-
-### Development Mode (Source Installation)
-
-For development with automatic rebuilding:
-
-```bash
-npm run dev
-```
+The server uses stdio transport and is compatible with any MCP client that supports this communication method.
 
 ### Testing with MCP Inspector
 
-You can test the server using the MCP Inspector:
+You can test the server functionality using the MCP Inspector:
 
-#### If installed globally:
 ```bash
-npx @modelcontextprotocol/inspector sorena-mcp
-```
-
-#### If built from source:
-```bash
-npm run inspect
+npx @modelcontextprotocol/inspector npx @uhyo/sorena-mcp
 ```
 
 ### Available Tools
@@ -136,24 +93,10 @@ Get expert advice and guidance on various topics.
 }
 ```
 
-## Integration
+### For Claude Desktop Users
 
-### With Claude Desktop
+Add this server to your Claude Desktop configuration file:
 
-Add this server to your Claude Desktop configuration:
-
-#### If installed globally:
-```json
-{
-  "mcpServers": {
-    "sorena": {
-      "command": "sorena-mcp"
-    }
-  }
-}
-```
-
-#### If installed locally in a project:
 ```json
 {
   "mcpServers": {
@@ -165,21 +108,18 @@ Add this server to your Claude Desktop configuration:
 }
 ```
 
-#### If built from source:
-```json
-{
-  "mcpServers": {
-    "sorena": {
-      "command": "node",
-      "args": ["/path/to/sorena-mcp/dist/index.js"]
-    }
-  }
-}
+### For Developers
+
+If you want to build from source for development or customization:
+
+```bash
+git clone https://github.com/uhyo/sorena-mcp.git
+cd sorena-mcp
+npm install
+npm run build
 ```
 
-### With Other MCP Clients
-
-The server follows the standard MCP protocol and can be integrated with any MCP-compatible client by connecting to the stdio transport. Use the appropriate command based on your installation method above.
+Then use `npm run dev` for development with automatic rebuilding, or `npm run inspect` to test with MCP Inspector.
 
 ## Development
 
