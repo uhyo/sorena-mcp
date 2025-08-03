@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "An MCP server that provides expert-level consultation services for AI agents",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "bin": {
+    "sorena-mcp": "dist/index.js"
+  },
   "type": "module",
   "engines": {
     "node": ">=22.0.0"
@@ -28,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uhyo/sorena-mcp.git"
+    "url": "git+https://github.com/uhyo/sorena-mcp.git"
   },
   "homepage": "https://github.com/uhyo/sorena-mcp#readme",
   "bugs": {
