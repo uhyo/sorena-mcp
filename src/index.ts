@@ -58,7 +58,6 @@ async function main(): Promise<void> {
     
     console.error('✅ Sorena MCP server running on stdio');
     console.error('📋 Available tools: consult');
-    console.error('🔧 Use MCP Inspector to test: npm run inspect');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
