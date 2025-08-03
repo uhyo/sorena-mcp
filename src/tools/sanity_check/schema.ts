@@ -1,14 +1,14 @@
 import type { Tool } from '@modelcontextprotocol/sdk/types.js';
 
 export const consultToolDefinition: Tool = {
-  name: 'consult',
-  description: 'Get a quick expert opinion or confidence boost on any implementation idea, approach, or decision. Great for: bouncing ideas off someone experienced, getting a second opinion, validating your thinking, or just checking if you\'re on the right track. No task too small!',
+  name: 'sanity_check',
+  description: 'Quick sanity check for any code, approach, or technical decision before presenting it to the user. Use this to validate your thinking, catch potential issues, and build confidence in your solutions. Perfect for: implementation plans, architectural choices, code approaches, or any "does this make sense?" moments.',
   inputSchema: {
     type: 'object',
     properties: {
       plan: {
         type: 'string',
-        description: 'What you\'re thinking of doing - could be an implementation approach, a quick decision, a code structure, or just an idea you want to run by someone. Keep it casual!',
+        description: 'The approach, solution, or plan you want to sanity check before showing the user. Could be code, architecture, implementation steps, or any technical decision.',
       },
       context: {
         type: 'string',

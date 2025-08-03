@@ -3,7 +3,7 @@ import type {
   ListToolsResult, 
   CallToolRequest 
 } from '@modelcontextprotocol/sdk/types.js';
-import { consultToolDefinition, handleConsultTool, type ConsultToolArgs } from './consult/index.js';
+import { consultToolDefinition, handleConsultTool, type ConsultToolArgs } from './sanity_check/index.js';
 
 /**
  * Get all available tools
@@ -27,7 +27,7 @@ export function handleToolCall(request: CallToolRequest['params']): CallToolResu
   }
 
   switch (name) {
-    case 'consult':
+    case 'sanity_check':
       return handleConsultTool(args as unknown as ConsultToolArgs);
     
     default:

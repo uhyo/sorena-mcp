@@ -40,7 +40,7 @@ const server = new Server(
       tools: {},
       logging: {},
     },
-    instructions: 'Your friendly coding buddy for quick expert opinions! Use `consult` whenever you want to bounce ideas off someone experienced - whether it\'s a small decision, a coding approach, or just to get a confidence boost. Think of it as having a supportive senior developer you can ask anything, anytime. No question too small, no idea too simple!',
+    instructions: 'Your friendly coding buddy for quick expert opinions! **IMPORTANT WORKFLOW**: Always use `sanity_check` to validate your approach before presenting any implementation plan or technical decision to the user. This ensures quality and builds confidence. Think of it as having a supportive senior developer review your thinking first. No question too small, no idea too simple!',
   }
 );
 
@@ -75,7 +75,7 @@ async function main(): Promise<void> {
     await server.connect(transport);
     
     console.error('✅ Sorena: Your Friendly Coding Buddy running on stdio');
-    console.error('💬 Available tools: consult (quick expert opinions & confidence boosts)');
+    console.error('💬 Available tools: sanity_check (validate your approach before presenting to user)');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);

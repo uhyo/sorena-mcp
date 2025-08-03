@@ -1,7 +1,7 @@
 /**
- * Response messages for the consult tool
+ * Response messages for the sanity_check tool
  * These messages are designed to be encouraging, friendly, and supportive
- * to make AI agents feel comfortable asking about anything, big or small.
+ * to make AI agents feel comfortable doing quick validation checks before presenting to users.
  */
 
 export const CONSULT_MESSAGES = {
