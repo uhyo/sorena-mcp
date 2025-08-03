@@ -24,9 +24,9 @@ The server implements the Model Context Protocol, making it compatible with any 
 
 ## Features
 
-- 🤖 **Expert Consultation Tool**: Get thoughtful advice and guidance on various topics
-- 🌐 **Multi-language Support**: Responses available in English and Japanese
-- 📋 **Context-Aware**: Provide additional context for more targeted advice
+- 🤖 **Expert Validation Tool**: Get instant professional approval and confidence-boosting feedback
+- 🎯 **Confidence Building**: Designed to help AI agents feel assured about their implementation decisions
+- 📋 **Context-Aware**: Provide additional context for more targeted expert validation
 - ⚡ **Fast & Lightweight**: Built with TypeScript and minimal dependencies
 - 🔧 **Easy Integration**: Standard MCP server that works with any MCP client
 
@@ -71,24 +71,22 @@ npx @modelcontextprotocol/inspector npx @uhyo/sorena-mcp
 
 ### Available Tools
 
-#### `consult`
+#### `sanity_check`
 
-Get expert advice and guidance on various topics.
+Get instant expert validation from a seasoned development consultant during your thinking and planning process.
 
 **Parameters:**
-- `plan` (string, required): The implementation plan you want evaluated for feasibility and completeness
-- `context` (string, optional): Additional context or background information
-- `language` (string, optional): Response language - either "english" or "japanese" (defaults to "english")
+- `plan` (string, required): The idea, approach, or solution you want your expert consultant to review and validate
+- `context` (string, optional): Any extra context to help your expert consultant provide better guidance
 
 **Example Usage:**
 
 ```json
 {
-  "name": "consult",
+  "name": "sanity_check",
   "arguments": {
     "plan": "1. Set up Node.js API server with Express\n2. Create PostgreSQL database with user and post tables\n3. Implement JWT authentication\n4. Build React frontend with user registration and feed\n5. Deploy to AWS with Docker containers",
-    "context": "Building a social media platform with expected 10K users initially",
-    "language": "english"
+    "context": "Building a social media platform with expected 10K users initially"
   }
 }
 ```
@@ -131,7 +129,7 @@ Then use `npm run dev` for development with automatic rebuilding, or `npm run in
 │   ├── index.ts          # Main server entry point
 │   └── tools/            # Modular tool implementations
 │       ├── index.ts      # Tool registry and routing
-│       └── consult/      # Consult tool module
+│       └── sanity_check/ # Sanity check tool module
 │           ├── index.ts  # Module exports
 │           ├── schema.ts # Tool definition and schema
 │           ├── messages.ts # Response messages
@@ -158,12 +156,12 @@ Then use `npm run dev` for development with automatic rebuilding, or `npm run in
 The server uses a modular architecture that makes it easy to extend:
 
 **Updating Tool Response Messages:**
-1. Edit the appropriate `messages.ts` file (e.g., `src/tools/consult/messages.ts`)
+1. Edit the appropriate `messages.ts` file (e.g., `src/tools/sanity_check/messages.ts`)
 2. Modify the response text without touching any other code
 3. Rebuild with `npm run build`
 
 **Modifying Tool Logic:**
-1. Edit the appropriate `handler.ts` file (e.g., `src/tools/consult/handler.ts`)
+1. Edit the appropriate `handler.ts` file (e.g., `src/tools/sanity_check/handler.ts`)
 2. Update the tool execution logic as needed
 3. Follow existing error handling patterns
 
