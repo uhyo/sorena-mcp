@@ -1,6 +1,6 @@
 {
   "name": "@uhyo/sorena-mcp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An MCP server that provides expert-level consultation services for AI agents",
   "main": "dist/index.js",
   "bin": {
