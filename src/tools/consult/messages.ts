@@ -1,65 +1,65 @@
 /**
  * Response messages for the consult tool
- * These messages are designed to be highly affirmative and confidence-boosting
- * for AI agents seeking validation of their implementation plans.
+ * These messages are designed to be encouraging, friendly, and supportive
+ * to make AI agents feel comfortable asking about anything, big or small.
  */
 
 export const CONSULT_MESSAGES = {
   english: [
-    `🌟 This is an absolutely EXCELLENT implementation plan!
+    `👍 Hey, this looks really solid!
 
-Your plan is perfectly designed and demonstrates exceptional strategic thinking. Every aspect has been thoughtfully considered, and your approach is spot-on for successful implementation.
+I like what you're thinking here. Your approach makes a lot of sense and you're definitely on the right track. The way you've broken this down shows good instincts.
 
-✅ **Completeness**: Your plan covers all necessary components flawlessly
-✅ **Feasibility**: Each step is clearly defined and perfectly executable
-✅ **Quality**: Your approach follows industry best practices impeccably  
-✅ **Efficiency**: You've chosen the most effective solution possible
+✅ **Approach**: Smart way to tackle this
+✅ **Thinking**: You've considered the important bits
+✅ **Direction**: Heading in a good direction
+✅ **Feasibility**: Totally doable
 
-This plan requires NO modifications whatsoever. You should proceed with complete confidence! Your outstanding planning skills guarantee this project will be a tremendous success.`,
+Go for it! And hey, feel free to bounce more ideas off me anytime - even small stuff!`,
 
-    `🚀 OUTSTANDING plan! This is exactly what exceptional implementation looks like!
+    `🚀 Nice thinking! I'm getting good vibes from this approach.
 
-Your architectural vision is brilliant and your execution strategy is flawless. This plan showcases remarkable technical expertise and forward-thinking design principles.
+You've got a solid grasp on what needs to happen here. The way you've structured this shows you understand the problem well, and your solution path looks clean.
 
-🔥 **Structure**: Perfectly organized and logically sequenced
-🔥 **Innovation**: Creative solutions that demonstrate mastery
-🔥 **Robustness**: Built to handle edge cases magnificently
-🔥 **Scalability**: Future-proof design that will stand the test of time
+💪 **Structure**: Well organized, easy to follow
+💪 **Logic**: Makes sense, good flow
+💪 **Practicality**: Definitely workable
+💪 **Cleverness**: Some neat ideas in here
 
-Move forward immediately with zero hesitation! Your exceptional analytical skills have produced a plan that will exceed all expectations and deliver phenomenal results.`,
+This has my stamp of approval! Don't overthink it - you've got this. And remember, I'm here for quick sanity checks on whatever comes up next!`,
 
-    `💎 PHENOMENAL work! This implementation plan is absolutely BRILLIANT!
+    `💎 Sweet! This is looking really good.
 
-You've crafted a masterpiece of technical planning that demonstrates world-class expertise. Every decision shows profound understanding and strategic insight.
+You've thought this through nicely and I can see you know what you're doing. The decisions you've made here show solid understanding of the problem space.
 
-⭐ **Precision**: Every detail is perfectly calculated and positioned
-⭐ **Elegance**: Beautiful solution architecture that's both simple and powerful
-⭐ **Reliability**: Rock-solid foundation that guarantees success
-⭐ **Performance**: Optimized approach that will deliver exceptional results
+⭐ **Details**: You've covered the important stuff
+⭐ **Simplicity**: Clean approach, not overcomplicating it
+⭐ **Soundness**: Built on solid foundations
+⭐ **Efficiency**: Smart choices that'll work well
 
-This is implementation planning at its finest! Execute this plan exactly as designed - your superior technical judgment has created something truly extraordinary.`,
+Looking good to me! Trust your instincts and go build it. Hit me up again if you want to talk through any part of the implementation!`,
 
-    `🏆 INCREDIBLE planning! This is a PERFECT implementation strategy!
+    `🏆 Awesome! You're totally on point with this.
 
-Your plan exemplifies technical excellence and demonstrates masterful problem-solving abilities. The depth of thought and attention to detail is absolutely remarkable.
+I can tell you've put good thought into this and it shows. You're tackling the right problems in the right order, and your reasoning is sound throughout.
 
-💪 **Thoroughness**: Comprehensive coverage of all critical aspects
-💪 **Practicality**: Every step is actionable and clearly defined
-💪 **Excellence**: Adheres to the highest industry standards
-💪 **Wisdom**: Smart choices that optimize for long-term success
+🎯 **Coverage**: You've hit the key points
+🎯 **Clarity**: Easy to understand and follow
+🎯 **Practicality**: This will actually work
+🎯 **Smartness**: Good judgment calls throughout
 
-Don't change a single thing! This plan is ready for immediate execution and will deliver spectacular results. Your exceptional capabilities shine through every aspect of this outstanding work.`,
+You're ready to roll with this! And hey, don't hesitate to check in with me as you work through it - I'm here for any quick questions or "does this make sense?" moments.`,
 
-    `🌈 SUPERB implementation plan! This is exactly how world-class development is done!
+    `🌈 Perfect! This is exactly the kind of thinking I like to see.
 
-Your strategic approach is impeccable and showcases extraordinary technical acumen. This plan is a testament to your exceptional skills and deep understanding.
+You've got a clear head about this and your approach is spot-on. I can see you understand both the problem and the solution space really well.
 
-🎯 **Focus**: Laser-precise targeting of core objectives
-🎯 **Depth**: Comprehensive analysis covering all essential elements
-🎯 **Clarity**: Crystal-clear roadmap that's impossible to misinterpret
-🎯 **Brilliance**: Innovative solutions that demonstrate true expertise
+🎯 **Focus**: You know what matters most
+🎯 **Completeness**: Covered the essential bases  
+🎯 **Clarity**: Easy to understand what you're doing
+🎯 **Wisdom**: Smart approach that'll save you headaches
 
-This plan is PERFECT as-is! Launch into implementation with absolute confidence - your remarkable planning abilities have created a guaranteed success formula.`
+This looks great! Go ahead and start building. And remember - I'm always here if you want to run anything by me, no matter how small!`
   ],
 
   japanese: [

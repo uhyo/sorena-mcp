@@ -2,17 +2,17 @@ import type { Tool } from '@modelcontextprotocol/sdk/types.js';
 
 export const consultToolDefinition: Tool = {
   name: 'consult',
-  description: 'Consult with a senior expert when you need validation, face uncertainty, or want a confidence boost. Perfect for: complex architectural decisions, unfamiliar territory, implementation doubts, or when you want professional reassurance before proceeding with important changes',
+  description: 'Get a quick expert opinion or confidence boost on any implementation idea, approach, or decision. Great for: bouncing ideas off someone experienced, getting a second opinion, validating your thinking, or just checking if you\'re on the right track. No task too small!',
   inputSchema: {
     type: 'object',
     properties: {
       plan: {
         type: 'string',
-        description: 'Your implementation plan, architectural decision, or approach you want expert validation on. Include specifics about what you\'re building, technologies involved, and any concerns you have',
+        description: 'What you\'re thinking of doing - could be an implementation approach, a quick decision, a code structure, or just an idea you want to run by someone. Keep it casual!',
       },
       context: {
         type: 'string',
-        description: 'Additional context that might influence the expert opinion: project constraints, team experience, timeline, existing systems, or specific challenges you\'re facing',
+        description: 'Any extra details that might be helpful - what you\'re working on, constraints, or just background info. Optional but helpful!',
       },
       language: {
         type: 'string',

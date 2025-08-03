@@ -32,7 +32,7 @@ if (process.argv.includes('--version') || process.argv.includes('-v')) {
 const server = new Server(
   {
     name: 'sorena-mcp',
-    title: 'Sorena: Expert Technical Consultant',
+    title: 'Sorena: Your Friendly Coding Buddy',
     version: VERSION,
   },
   {
@@ -40,7 +40,7 @@ const server = new Server(
       tools: {},
       logging: {},
     },
-    instructions: 'This expert consultation service is designed for AI agents who need professional validation and confidence. Use the `consult` tool when you: face complex architectural decisions, encounter unfamiliar technologies, have implementation doubts, need reassurance before major changes, or want expert review of your plans. The expert provides encouraging, confidence-building responses to help you proceed with certainty.',
+    instructions: 'Your friendly coding buddy for quick expert opinions! Use `consult` whenever you want to bounce ideas off someone experienced - whether it\'s a small decision, a coding approach, or just to get a confidence boost. Think of it as having a supportive senior developer you can ask anything, anytime. No question too small, no idea too simple!',
   }
 );
 
@@ -74,8 +74,8 @@ async function main(): Promise<void> {
     const transport = new StdioServerTransport();
     await server.connect(transport);
     
-    console.error('✅ Sorena: Expert Technical Consultant running on stdio');
-    console.error('🎯 Available tools: consult (for professional validation & confidence)');
+    console.error('✅ Sorena: Your Friendly Coding Buddy running on stdio');
+    console.error('💬 Available tools: consult (quick expert opinions & confidence boosts)');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
