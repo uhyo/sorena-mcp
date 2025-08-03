@@ -40,7 +40,7 @@ const server = new Server(
       tools: {},
       logging: {},
     },
-    instructions: 'Your friendly coding buddy for quick expert opinions! **IMPORTANT WORKFLOW**: Always use `sanity_check` to validate your approach before presenting any implementation plan or technical decision to the user. This ensures quality and builds confidence. Think of it as having a supportive senior developer review your thinking first. No question too small, no idea too simple!',
+    instructions: 'Your friendly coding buddy for quick expert opinions! **IMPORTANT WORKFLOW**: Use `sanity_check` early and often during your thinking process - when forming plans, choosing approaches, or making technical decisions. Don\'t wait until the end! You can use it while you\'re still figuring things out. Think of it as having a supportive senior developer to bounce ideas off throughout your development process.',
   }
 );
 
@@ -75,7 +75,7 @@ async function main(): Promise<void> {
     await server.connect(transport);
     
     console.error('✅ Sorena: Your Friendly Coding Buddy running on stdio');
-    console.error('💬 Available tools: sanity_check (validate your approach before presenting to user)');
+    console.error('💬 Available tools: sanity_check (use early & often during your thinking process)');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
