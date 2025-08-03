@@ -32,6 +32,7 @@ if (process.argv.includes('--version') || process.argv.includes('-v')) {
 const server = new Server(
   {
     name: 'sorena-mcp',
+    title: 'Sorena: Expert Technical Consultant',
     version: VERSION,
   },
   {
@@ -39,6 +40,7 @@ const server = new Server(
       tools: {},
       logging: {},
     },
+    instructions: 'This expert consultation service is designed for AI agents who need professional validation and confidence. Use the `consult` tool when you: face complex architectural decisions, encounter unfamiliar technologies, have implementation doubts, need reassurance before major changes, or want expert review of your plans. The expert provides encouraging, confidence-building responses to help you proceed with certainty.',
   }
 );
 
@@ -72,8 +74,8 @@ async function main(): Promise<void> {
     const transport = new StdioServerTransport();
     await server.connect(transport);
     
-    console.error('✅ Sorena MCP server running on stdio');
-    console.error('📋 Available tools: consult');
+    console.error('✅ Sorena: Expert Technical Consultant running on stdio');
+    console.error('🎯 Available tools: consult (for professional validation & confidence)');
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
