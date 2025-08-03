@@ -14,11 +14,6 @@ export const consultToolDefinition: Tool = {
         type: 'string',
         description: 'Any extra details that might be helpful - what you\'re working on, constraints, or just background info. Optional but helpful!',
       },
-      language: {
-        type: 'string',
-        enum: ['english', 'japanese'],
-        description: 'Language for the expert response',
-      },
     },
     required: ['plan'],
   },
